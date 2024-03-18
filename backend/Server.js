@@ -75,6 +75,10 @@ const logout = async(req,res) => {
 app.post("/register", register);
 app.post("/login", login);
 app.post("/logout", logout);
+app.get('/profile', (req, res) => {
+    
+    res.json({ message: 'Welcome to your profile' });
+  });
 
 
 //server started
