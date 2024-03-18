@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function UseContextProvider({children}) {
 
+    const[msg, setMsg] = useState("")
     const[username, setUsername] = useState("");
     const[password, setPassword] = useState("");
     const[fullName, setFullName] = useState("");
@@ -28,6 +29,7 @@ function UseContextProvider({children}) {
         const res = await axios.post("http://localhost:3000/login", {
             username,password
         });
+        setMsg(res.data.message)
         toast.success("Login successfull");
         window.location = "/homePage";
     } catch (error) {

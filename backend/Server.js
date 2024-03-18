@@ -41,26 +41,24 @@ const register = async(req,res) => {
 }
 
 const login = async(req,res) => {
+
     const {username, password} = req.body;
 
     try {
-        const findUser = await userModel.findOne({
-            username,password
-        })
+        const user = await userModel.findOne({username,password})
         
-        if(!findUser){
-            return res.status(400).json({message: "No account found"});
+        if(!user){
+            return res.status(404).json({message: "No account found"});
         }
-        else{
-            req.session.findUser = {
-                username : findUser.username,
-                password : findUser.password,
+            req.session.user = {
+                username : user.username,
+                password : user.password,
             }
 
-            res.json({message: "Login successfull"});
-        }
+            res.status(200).json({message: "Login successfull"});
+
     } catch (error) {
-        res.status(400).json({message: "Error logging in"});
+        res.status(404).json({message: "Error logging in"});
     }
 }
 
