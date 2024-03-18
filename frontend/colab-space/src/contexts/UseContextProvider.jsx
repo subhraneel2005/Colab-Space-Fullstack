@@ -37,8 +37,18 @@ function UseContextProvider({children}) {
     }
     }
 
+    const handleLogout = async() => {
+        try {
+         await axios.post("http://localhost:3000/logout");
+         window.location = '/login';
+         toast.success("Logged out successfully");
+        } catch (error) {
+         toast.error("Error logging out");
+        }
+       }
+
   return (
-    <UseContext.Provider value={{username,setUsername, fullName,setFullName, password, setPassword, handleRegister, handleLogin}}>
+    <UseContext.Provider value={{username,setUsername, fullName,setFullName, password, setPassword, handleRegister, handleLogin,handleLogout}}>
         {children}
     </UseContext.Provider>
   )

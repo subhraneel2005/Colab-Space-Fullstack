@@ -62,10 +62,10 @@ const login = async(req,res) => {
     }
 }
 
-const logout = async(req,res) => {
-    res.session.destroy();
-    res.status(200).json({message: "Logged out successfully"});
-}
+const logout = (req,res) => {
+    req.session.destroy();
+    res.json({message: "Logged out successfully"});
+ }
 
 
 //auth routes

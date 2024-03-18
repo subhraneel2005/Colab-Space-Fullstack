@@ -10,9 +10,9 @@ function Login() {
     const navigate = useNavigate();
 
   return (
-    <div className='w-full min-h-screen flex justify-center items-center'>
+    <div className='w-full min-h-screen flex justify-center items-center bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500'>
         <ToastContainer/>
-        <div className='w-[300px] h-[450px] rounded-xl shadow-xl bg-gray-300 text-black text-xl flex justify-center items-center'>
+        <div className='w-[350px] h-[450px] rounded-xl shadow-xl bg-gray-300 text-black text-xl flex justify-center items-center'>
             <div className='block ml-6'>
                 <h1 className='text-2xl text-center mr-3 mb-6'>Login</h1>
                 <input 
