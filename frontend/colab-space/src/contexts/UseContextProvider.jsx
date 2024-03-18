@@ -17,6 +17,7 @@ function UseContextProvider({children}) {
                 fullName, username, password
             });
             toast.success(res.data.message);
+            window.location = "/homePage";
         } catch (error) {
             toast.error("Username already exists");
         }
@@ -28,13 +29,14 @@ function UseContextProvider({children}) {
             username,password
         });
         toast.success("Login successfull");
+        window.location = "/homePage";
     } catch (error) {
         toast.error("Invalid credentials");
     }
     }
 
   return (
-    <UseContext.Provider>
+    <UseContext.Provider value={{username,setUsername, fullName,setFullName, password, setPassword, handleRegister, handleLogin}}>
         {children}
     </UseContext.Provider>
   )

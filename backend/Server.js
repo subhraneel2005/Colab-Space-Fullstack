@@ -26,12 +26,12 @@ const register = async(req,res) => {
     const { username, password, fullName} = req.body;
 
     try {
-        const userExists = userModel.findOne({username});
+        const userExists = await userModel.findOne({username});
         if(userExists){
             res.status(400).json({message: "Username already exists"});
         }
         else{
-            const newUser = new userModel ({username,password, fullName});
+            const newUser = new userModel ({username, password, fullName});
             await newUser.save();
             res.status(200).json({message: "Registration successfull"});
         }
