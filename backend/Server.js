@@ -40,6 +40,44 @@ const register = async(req,res) => {
     }
 }
 
+const login = async(req,res) => {
+    const {username, password} = req.body;
+
+    try {
+        const findUser = await userModel.findOne({
+            username,password
+        })
+        
+        if(!findUser){
+            return res.status(400).json({message: "No account found"});
+        }
+        else{
+            req.session.findUser = {
+                username : findUser.username,
+                password : findUser.password,
+            }
+
+            res.json({message: "Login successfull"});
+        }
+    } catch (error) {
+        res.status(400).json({message: "Error logging in"});
+    }
+}
+
+const logout = async(req,res) => {
+    res.session.destroy();
+    res.status(200).json({message: "Logged out successfully"});
+}
+
+
+//auth routes
+
+app.post("/register", register);
+app.post("/login", login);
+app.post("/logout", logout);
+
+
+//server started
 app.listen(port, () => {
     console.log(`Server listening on port: ${port}`);
 })
