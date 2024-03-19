@@ -10,7 +10,7 @@ function Register() {
     const navigate = useNavigate();
 
   return (
-    <div className='w-full min-h-screen flex justify-center items-center bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500'>
+    <div className='w-full min-h-screen flex justify-center items-center bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 select-none'>
       <ToastContainer/>
         <div className='w-[350px] h-[450px] rounded-xl shadow-xl bg-gray-300 text-black text-xl flex justify-center items-center'>
             <div className='block ml-6'>

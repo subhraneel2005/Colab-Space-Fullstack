@@ -5,6 +5,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 import HomePge from './components/HomePge'
 import Loader from './components/Loader'
+import Dashboard from './components/Dashboard'
 
 function App() {
 
@@ -27,9 +28,10 @@ function App() {
   return (
     <UseContextProvider>
       <Routes>
-        <Route path='/' element={<Register/>}/>
+        <Route path='/' element={<HomePge/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/homePage' element={<HomePge/>}/>
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}/>
       </Routes>
     </UseContextProvider>
   )

@@ -10,7 +10,7 @@ function Login() {
     const navigate = useNavigate();
 
   return (
-    <div className='w-full min-h-screen flex justify-center items-center bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500'>
+    <div className='w-full min-h-screen flex justify-center items-center bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 select-none'>
         <ToastContainer/>
         <div className='w-[350px] h-[450px] rounded-xl shadow-xl bg-gray-300 text-black text-xl flex justify-center items-center'>
             <div className='block ml-6'>
@@ -27,7 +27,7 @@ function Login() {
                 value={password}
                 placeholder='Password'
                 className='px-4 py-2 rounded-md border-none outline-none bg-slate-800 text-white text-xl mb-4' />
-                <p className='text-xl text-center mt-3'>New to Colab-Space <a className='underline  cursor-pointer decoration-green-700' onClick={() => navigate("/")}>Register</a></p>
+                <p className='text-xl text-center mt-3'>New to Colab-Space <a className='underline  cursor-pointer decoration-green-700' onClick={() => navigate("/register")}>Register</a></p>
                 <button className='p-3 bg-blue-500 mt-6 rounded-xl text-white hover:bg-blue-800 cursor-pointer' onClick={handleLogin}>Login</button>
             </div>
         </div>

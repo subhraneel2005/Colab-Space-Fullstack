@@ -18,7 +18,7 @@ function UseContextProvider({children}) {
                 fullName, username, password
             });
             toast.success(res.data.message);
-            window.location = "/homePage";
+            window.location = "/dashboard";
         } catch (error) {
             toast.error("Username already exists");
         }
@@ -31,7 +31,7 @@ function UseContextProvider({children}) {
         });
         setMsg(res.data.message)
         toast.success("Login successfull");
-        window.location = "/homePage";
+        window.location = "/dashboard";
     } catch (error) {
         toast.error("Invalid credentials");
     }
@@ -40,7 +40,7 @@ function UseContextProvider({children}) {
     const handleLogout = async() => {
         try {
          await axios.post("http://localhost:3000/logout");
-         window.location = '/login';
+         window.location = '/';
          toast.success("Logged out successfully");
         } catch (error) {
          toast.error("Error logging out");
