@@ -31,7 +31,7 @@ function App() {
         <Route path='/' element={<HomePge/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/dashboard' element={<CreateRoom/>}/>
+        <Route path='/createRoom' element={<CreateRoom/>}/>
       </Routes>
     </UseContextProvider>
   )
