@@ -6,6 +6,8 @@ import Login from './components/Login'
 import HomePge from './components/HomePge'
 import Loader from './components/Loader'
 import CreateRoom from './components/CreateRoom'
+import RoomChoice from './components/RoomChoice'
+import JoinRoom from './components/JoinRoom'
 
 function App() {
 
@@ -31,7 +33,9 @@ function App() {
         <Route path='/' element={<HomePge/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/roomChoice' element={<RoomChoice/>}/>
         <Route path='/createRoom' element={<CreateRoom/>}/>
+        <Route path='/joinRoom' element={<JoinRoom/>}/>
       </Routes>
     </UseContextProvider>
   )

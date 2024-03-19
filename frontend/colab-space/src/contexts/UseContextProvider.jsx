@@ -18,7 +18,7 @@ function UseContextProvider({children}) {
                 fullName, username, password
             });
             toast.success(res.data.message);
-            window.location = "/createRoom";
+            window.location = "/roomChoice";
         } catch (error) {
             toast.error("Username already exists");
         }
@@ -31,7 +31,7 @@ function UseContextProvider({children}) {
         });
         setMsg(res.data.message)
         toast.success("Login successfull");
-        window.location = "/createRoom";
+        window.location = "/roomChoice";
     } catch (error) {
         toast.error("Invalid credentials");
     }
