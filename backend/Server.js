@@ -5,6 +5,7 @@ const userModel = require("./Users");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const session = require("express-session");
+const roomSchema = require("./Rooms");
 
 const port = 3000 || process.env.port;
 
@@ -65,7 +66,33 @@ const login = async(req,res) => {
 const logout = (req,res) => {
     req.session.destroy();
     res.json({message: "Logged out successfully"});
- }
+}
+
+//Room create, join and leave functions
+
+const createRoom = async(req,res) => {
+    const {roomName} = req.body;
+
+    const roomExists =  await roomSchema.findOne({roomName});
+
+    if(roomExists){
+        res.json({message: "Roomname is already taken"});
+    }
+    const newRoom = new roomSchema({roomName});
+    await newRoom.save();
+    res.json({message: "Room created successfully"});
+}
+
+const joinRoom = async(req,res) => {
+    const {roomId} = req.body;
+    const room  = await roomSchema.findOne({roomId});
+
+    if(!room){
+        res.json({message: "No room exists"});
+    }
+
+    res,json(room);
+}
 
 
 //auth routes
@@ -76,7 +103,12 @@ app.post("/logout", logout);
 app.get('/profile', (req, res) => {
     
     res.json({ message: 'Welcome to your profile' });
-  });
+});
+
+//room routes
+
+app.post("/createRoom", createRoom);
+app.post("/joinRoom", joinRoom);
 
 
 //server started
