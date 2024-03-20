@@ -12,7 +12,7 @@ function HomePge() {
         <h1 className='md:text-[10vw] text-6xl text-slate-900'>Colab Space</h1>
         <p className='md:text-[2vw] text-xl mt-10 text-slate-800'>Connect instantly with video calls, share screens, and chat in realtime. Colab Space is your virtual hub for teamwork and communication.</p>
        
-        <button className='rounded-xl md:ml-[44%] bg-gradient-to-br from-purple-600 via-blue-600 to-gray-600 cursor-pointer text-gray-200 px-4 py-3 mt-10' onClick={() => navigate("/register")}>Get started</button>
+        <button className='rounded-xl md:ml-[44%] bg-gray-200 cursor-pointer text-black px-4 py-3 mt-10' onClick={() => navigate("/register")}>Get started</button>
         </div>
     </div>
   )

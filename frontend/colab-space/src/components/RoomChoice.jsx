@@ -12,8 +12,8 @@ function RoomChoice() {
         <div className='w-full block'>
         <AppBar/>
         <div className='md:ml-[34%] ml-10'>
-          <button className=' ml-6 rounded-xl bg-gradient-to-br from-purple-600 via-blue-600 to-gray-600 cursor-pointer text-gray-200 px-4 py-3 mt-5' onClick={() => navigate("/createRoom")}>Create new room</button>
-          <button className=' ml-6 rounded-xl bg-gradient-to-br from-purple-600 via-blue-600 to-gray-600 cursor-pointer text-gray-200 px-4 py-3 mt-5' onClick={() => navigate("/joinRoom")}>Join a room</button>
+          <button className=' ml-6 rounded-xl bg-gray-200 cursor-pointer text-black  px-4 py-3 mt-5' onClick={() => navigate("/createRoom")}>Create new room</button>
+          <button className=' ml-6 rounded-xl bg-gray-200 cursor-pointer text-black px-4 py-3 mt-5' onClick={() => navigate("/joinRoom")}>Join a room</button>
           </div>
         </div>
         </div>
