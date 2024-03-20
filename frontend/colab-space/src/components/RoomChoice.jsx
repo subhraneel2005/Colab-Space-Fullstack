@@ -11,9 +11,9 @@ function RoomChoice() {
         <div className='w-full h-full flex justify-center items-center'>
         <div className='w-full block'>
         <AppBar/>
-        <div className='md:ml-[34%] ml-10'>
-          <button className=' ml-6 rounded-xl bg-gray-200 cursor-pointer text-black  px-4 py-3 mt-5' onClick={() => navigate("/createRoom")}>Create new room</button>
-          <button className=' ml-6 rounded-xl bg-gray-200 cursor-pointer text-black px-4 py-3 mt-5' onClick={() => navigate("/joinRoom")}>Join a room</button>
+        <div className='md:ml-[37%] ml-10'>
+          <button className='hover:bg-gray-500 ml-6 rounded-xl bg-gray-200 cursor-pointer text-black  px-4 py-3 mt-5' onClick={() => navigate("/createRoom")}>Create new room</button>
+          <button className='hover:bg-gray-500 ml-6 rounded-xl bg-gray-200 cursor-pointer text-black px-4 py-3 mt-5' onClick={() => navigate("/joinRoom")}>Join a room</button>
           </div>
         </div>
         </div>
