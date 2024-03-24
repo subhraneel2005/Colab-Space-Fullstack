@@ -17,6 +17,8 @@ function CreateRoom() {
     else{
       toast.success(`You are being redirected to Room ${roomName} ID: ${randomID}`);
     }
+
+    window.location = `/chat/${randomID}`
   }
 
   return (

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import UseContextProvider from './contexts/UseContextProvider'
+import UseContext from './contexts/UseContext'
 import { Routes, Route } from "react-router-dom"
 import Register from './components/Register'
 import Login from './components/Login'
@@ -8,10 +9,12 @@ import Loader from './components/Loader'
 import CreateRoom from './components/CreateRoom'
 import RoomChoice from './components/RoomChoice'
 import JoinRoom from './components/JoinRoom'
+import ChatRoom from './components/ChatRoom'
 
 function App() {
 
   const [isLoading, setIsLoading] = useState(true);
+
   
 
   useEffect(() => {
@@ -36,6 +39,7 @@ function App() {
         <Route path='/roomChoice' element={<RoomChoice/>}/>
         <Route path='/createRoom' element={<CreateRoom/>}/>
         <Route path='/joinRoom' element={<JoinRoom/>}/>
+        <Route path='/chat/:id' element={<ChatRoom/>}/>
       </Routes>
     </UseContextProvider>
   )
