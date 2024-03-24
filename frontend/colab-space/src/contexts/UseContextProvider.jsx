@@ -6,11 +6,21 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function UseContextProvider({children}) {
 
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let [randomID, setRandomID] = useState("");
     const[msg, setMsg] = useState("")
     const[username, setUsername] = useState("");
     const[password, setPassword] = useState("");
     const[fullName, setFullName] = useState("");
     const[isAuthenticated, setIsAuthenticated] = useState(false);
+
+    const generateRandomID = () => {
+        for (let i = 0; i < 6; i++) {
+            setRandomID(randomID += characters.charAt(Math.floor(Math.random() * characters.length)));
+          }
+
+          return randomID;
+    }
 
     const handleRegister = async() => {
         try {
@@ -48,7 +58,7 @@ function UseContextProvider({children}) {
        }
 
   return (
-    <UseContext.Provider value={{username,setUsername, fullName,setFullName, password, setPassword, handleRegister, handleLogin,handleLogout}}>
+    <UseContext.Provider value={{generateRandomID,randomID,username,setUsername, fullName,setFullName, password, setPassword, handleRegister, handleLogin,handleLogout}}>
         {children}
     </UseContext.Provider>
   )
