@@ -7,6 +7,7 @@ import ErrorPage from '../components/ErrorPage';
 
 function UseContextProvider({children}) {
 
+    const[socket, setSocket] = useState(null)
     let [randomID, setRandomID] = useState("");
     const[msg, setMsg] = useState("")
     const[username, setUsername] = useState("");
@@ -16,6 +17,18 @@ function UseContextProvider({children}) {
     const[roomData, setRoomData] = useState({});
     const[allRoomIds, setAllRoomIds] = useState([]);
     const [roomName, setRoomName] = useState("");
+
+
+    const enterRoom = () => {
+        if(!roomName){
+          toast.error("Please input a Room Name!");
+          return <ErrorPage/>;
+        }
+        else{
+          toast.success("Room created successfully");
+          window.location= `chat/${roomName}`
+        }
+      }
 
     const fetchRoomData = async() => {
         try {
@@ -65,7 +78,7 @@ function UseContextProvider({children}) {
 
 
   return (
-    <UseContext.Provider value={{roomName, setRoomName,randomID,username,setUsername, fullName,setFullName, password, setPassword, handleRegister, handleLogin,handleLogout,fetchRoomData,setRoomData,allRoomIds}}>
+    <UseContext.Provider value={{enterRoom,socket, setSocket,roomName, setRoomName,randomID,username,setUsername, fullName,setFullName, password, setPassword, handleRegister, handleLogin,handleLogout,fetchRoomData,setRoomData,allRoomIds}}>
         {children}
     </UseContext.Provider>
   )

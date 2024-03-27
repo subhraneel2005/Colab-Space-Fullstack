@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import UseContext from '../contexts/UseContext';
 
+
 function ChatRoom() {
-    const { roomName, username } = useContext(UseContext);
+
+    const { socket, setSocket,roomName, setRoomName } = useContext(UseContext);
 
   return (
     <div>

@@ -6,12 +6,11 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const session = require("express-session");
 const roomSchema = require("./Rooms");
-const http = require("http");
-const socketIo = require("socket.io")
-const server = http.createServer(app);
+// cd des   cdcdkdckk
 
 const port = 3000 || process.env.port;
 
+// const rooms = {};
 
 //database connection
 mongoose.connect("mongodb://127.0.0.1:27017/ColabSpaceDB");
@@ -25,7 +24,39 @@ app.use(session({
     saveUninitialized: false, 
 }))
 
-//io middleware
+//io logic
+
+// io.on("connection", (socket) => {
+//     socket.on("createRoom", (roomName) => {
+//         rooms[roomName] = socket.id;
+//         socket.join(roomName);
+//     });
+
+//     socket.on("joinRoom", (roomName) => {
+//         const createSocketId = rooms[roomName];
+//         if (createSocketId) {
+//             io.to(createSocketId).emit("userJoined", socket.id);
+//         } else {
+//             socket.emit("error", "Room not found");
+//         }
+//     });
+
+//     socket.on("signal", (data) => {
+//         io.to(data.target).emit("signal", {
+//             source: socket.id,
+//             signal: data.signal,
+//         });
+//     });
+
+//     socket.on("disconnect", () => {
+//         for(const roomId in rooms){
+//             if(rooms[roomId] === socket.id){
+//                 delete rooms[roomId];
+//                 break;
+//             }
+//         }
+//     });
+// });
 
 //register login and logout functions
 
@@ -127,4 +158,3 @@ app.listen(port, () => {
     console.log(`Server listening on port: ${port}`);
 })
 
-//socket started
