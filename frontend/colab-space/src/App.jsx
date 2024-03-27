@@ -10,6 +10,7 @@ import CreateRoom from './components/CreateRoom'
 import RoomChoice from './components/RoomChoice'
 import JoinRoom from './components/JoinRoom'
 import ChatRoom from './components/ChatRoom'
+import ErrorPage from './components/ErrorPage'
 
 function App() {
 

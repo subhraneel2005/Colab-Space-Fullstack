@@ -3,22 +3,25 @@ import AppBar from './AppBar';
 import UseContext from '../contexts/UseContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ErrorPage from './ErrorPage';
 
 
 function CreateRoom() {
    
-  const [roomName, setRoomName] = useState("")
+  const [roomId, setRoomId] = useState("");
+  const [allRoomIds, setAllRoomIds] = useState([]);
   const {generateRandomID, randomID} = useContext(UseContext);
 
   const enterRoom = () => {
-    if(!randomID && !roomName.trim()){
+    if(!roomId){
         toast.error("Enter the credentials")
+        return <ErrorPage/>;
     }
     else{
-      toast.success(`You are being redirected to Room ${roomName} ID: ${randomID}`);
+      toast.success(`You are being redirected to Room ID: ${roomId}`);
     }
 
-    window.location = `/chat/${randomID}`
+    window.location = `/chat/${roomId}`
   }
 
   return (
@@ -30,17 +33,11 @@ function CreateRoom() {
         <div className='md:ml-[30%] ml-10'>
           <input 
           type="text"
-          value={roomName}
-          placeholder='Room name'
-          onChange={(e) => setRoomName(e.target.value)}
+          value={roomId}
+          placeholder='Enter Room Id'
+          onChange={(e) => setRoomId(e.target.value)}
           className='px-4 py-2 rounded-md border-none outline-none bg-slate-800 text-white text-xl mb-4' />
-          <button className=' ml-6 rounded-xl bg-gray-200 cursor-pointer text-black px-4 py-3 mt-5' onClick={generateRandomID}>Generate room id</button>
-          </div>
-          <div className='block mt-20 overflow-hidden'>
-            <h1 className='text-center text-white text-3xl'>Room Details: </h1>
-            <h1 className='select-auto text-center text-xl text-gray-950'>{`Room Name: ${roomName}`}</h1>
-            <h1 className='text-center text-gray-950 text-xl'>{`Room ID: ${randomID}`}</h1>
-            <button className='ml-[27%] md:ml-[45%] mt-[40px] px-4 py-2 rounded-xl bg-gray-300 text-gray-950 text-xl hover:bg-gray-500 cursor-pointer' onClick={enterRoom}>Enter Room</button>
+          <button className=' ml-6 rounded-xl bg-gray-200 cursor-pointer text-black px-4 py-3 mt-5' onClick={enterRoom}>Enter Room</button>
           </div>
         </div>
         </div>
