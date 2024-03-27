@@ -26,6 +26,15 @@ function UseContextProvider({children}) {
         }
     }
 
+    const generateRandomID = () => {
+        for (let i = 0; i < 6; i++) {
+            setRandomID(randomID += characters.charAt(Math.floor(Math.random() * characters.length)));
+          }
+          setAllRoomIds(prev=>[...prev, randomID]);
+          console.log(allRoomIds);
+          return randomID;
+    }
+
     const handleRegister = async() => {
         try {
             const res = await axios.post("http://localhost:3000/register", {
