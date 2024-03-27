@@ -9,6 +9,8 @@ const roomSchema = require("./Rooms");
 
 const port = 3000 || process.env.port;
 
+
+
 //database connection
 mongoose.connect("mongodb://127.0.0.1:27017/ColabSpaceDB");
 
@@ -94,11 +96,6 @@ const joinRoom = async(req,res) => {
     res,json(room);
 }
 
-const roomIDFunc = (req,res) => {
-    const roomID = req.params.id
-    res.send(roomID);
-}
-
 
 //auth routes
 
@@ -114,7 +111,7 @@ app.get('/profile', (req, res) => {
 
 app.post("/createRoom", createRoom);
 app.post("/joinRoom", joinRoom);
-app.get("/:id", roomIDFunc);
+
 
 //server started
 app.listen(port, () => {

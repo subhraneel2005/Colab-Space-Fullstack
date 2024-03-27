@@ -6,7 +6,7 @@ const roomSchema = mongoose.Schema({
         default: () => Math.random().toString(36).substr(2,9)
     },
     roomName: String,
-    users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }]
+    
 });
 
 module.exports = mongoose.model("Rooms", roomSchema);
