@@ -6,6 +6,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const session = require("express-session");
 const roomSchema = require("./Rooms");
+const http = require("http");
+const socketIo = require("socket.io")
+const server = http.createServer(app);
 
 const port = 3000 || process.env.port;
 
@@ -21,6 +24,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false, 
 }))
+
+//io middleware
 
 //register login and logout functions
 
@@ -121,3 +126,5 @@ app.get("/:id", roomIDFunc);
 app.listen(port, () => {
     console.log(`Server listening on port: ${port}`);
 })
+
+//socket started

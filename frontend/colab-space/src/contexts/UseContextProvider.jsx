@@ -3,6 +3,7 @@ import UseContext from './UseContext'
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ErrorPage from '../components/ErrorPage';
 
 function UseContextProvider({children}) {
 
@@ -14,25 +15,17 @@ function UseContextProvider({children}) {
     const[isAuthenticated, setIsAuthenticated] = useState(false);
     const[roomData, setRoomData] = useState({});
     const[allRoomIds, setAllRoomIds] = useState([]);
+    const [roomName, setRoomName] = useState("");
 
     const fetchRoomData = async() => {
         try {
-            const response = await axios.get(`http://localhost:3000/:${randomID}`);
+            const response = await axios.get(`http://localhost:3000/:${roomName}`);
             setRoomData(response.data);
             toast.success("Entered room successfully");
         } catch (error) {
             console.log(error);
             toast.error("Error entering room")
         }
-    }
-
-    const generateRandomID = () => {
-        for (let i = 0; i < 6; i++) {
-            setRandomID(randomID += characters.charAt(Math.floor(Math.random() * characters.length)));
-          }
-          setAllRoomIds(prev=>[...prev, randomID]);
-          console.log(allRoomIds);
-          return randomID;
     }
 
     const handleRegister = async() => {
@@ -68,10 +61,11 @@ function UseContextProvider({children}) {
         } catch (error) {
          toast.error("Error logging out");
         }
-       }
+    }
+
 
   return (
-    <UseContext.Provider value={{generateRandomID,randomID,username,setUsername, fullName,setFullName, password, setPassword, handleRegister, handleLogin,handleLogout,fetchRoomData,setRoomData,allRoomIds}}>
+    <UseContext.Provider value={{roomName, setRoomName,randomID,username,setUsername, fullName,setFullName, password, setPassword, handleRegister, handleLogin,handleLogout,fetchRoomData,setRoomData,allRoomIds}}>
         {children}
     </UseContext.Provider>
   )
